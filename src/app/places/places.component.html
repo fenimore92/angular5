@@ -6,10 +6,11 @@
     <div class="row">
         <div class="col-md-8">
             <h2>Lugares Cercanos</h2>
+            <a class="btn btn-primary" routerLink="/crear">Crear nuevo negocio</a>
             <ul class="list-group">
                 <ng-container *ngFor="let place of places">
                     <a routerLink="/detail/{{place.id}}" [queryParams]="{action:'view'}">
-                        <li *ngIf="place.active" class="list-group-item">
+                        <li class="list-group-item">
                             {{place.name}}
                         </li>
                     </a>

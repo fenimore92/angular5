@@ -1,0 +1,53 @@
+<div class="well">
+    <a routerLink="/places">Lugares</a> / Crear
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        Crear
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal">
+                        <label>Nombre</label>
+                        <input type="text" class="form-control" [(ngModel)]="place.name" name="name"/>
+                        <br/>
+                        <label>Distancia</label>
+                        <input type="number" class="form-control" [(ngModel)]="place.distance" name="distance"/>
+                        <br/>
+                        <label>Cercania</label>
+                        <input type="number" class="form-control" [(ngModel)]="place.closeness" name="closeness"/>
+                        <br/>
+                        <label>Descripcion</label>
+                        <textarea class="form-control" rows="5" [(ngModel)]="place.desc" name="desc"></textarea>
+                        <br/>
+                        <label>Plan</label>
+                        <input type="text" class="form-control" [(ngModel)]="place.plan" name="plan"/>
+                        <hr/>
+                        <a class="btn btn-primary" (click)="savePlace()">Enviar</a>
+                        <a class="btn btn-default" routerLink="/places">Cancelar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        Informacion PlatziSquare!
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div class="card-body">
+                        <p class="card-text">
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec qu
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
