@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
-import { AngularFireDatabase } from'angularfire2/database';
+import {AngularFireDatabase} from'angularfire2/database';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class PlacesService {
@@ -12,7 +13,7 @@ export class PlacesService {
         {id: 6, plan: 'gratuito', closeness: 3, distance: 3, active: false, name: 'Zapatería el Clavo', desc: 'Descripcion de este negocio. Mas adelante tendremos mas informacion.'},
     ];
 
-    constructor(private afDB: AngularFireDatabase) {}
+    constructor(private afDB: AngularFireDatabase, private http: HttpClient) {}
 
     public getPlaces() {
         return this.afDB.list('places/');
@@ -23,7 +24,10 @@ export class PlacesService {
     }
 
     public savePlace(place) {
-        console.log('PlacesService@savePlace', place);
-        this.afDB.database.ref('places/' + place.id).set(place);
+        this.afDB.database.ref(`places/${place.id}`).set(place);
+    }
+
+    public getGeoData(address) {
+        return this.http.get('http://maps.google.com/maps/api/geocode/json?address=' + address);
     }
 }

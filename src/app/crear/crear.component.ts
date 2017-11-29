@@ -11,9 +11,15 @@ export class CrearComponent {
 
     }
     savePlace() {
-        this.place.id = Date.now();
-        this.placesServices.savePlace(this.place);
-        alert('Negocio guardado!');
-        this.place = {};
+        const address = `${this.place.street},${this.place.city},${this.place.country}`;
+        this.placesServices.getGeoData(address)
+            .subscribe((result) => {
+                this.place.id = Date.now();
+                this.place.lat =  result['results'][0].geometry.location.lat;
+                this.place.lng = result['results'][0].geometry.location.lng;
+                this.placesServices.savePlace(this.place);
+                alert('Negocio guardado!');
+                this.place = {};
+            });
     }
 }

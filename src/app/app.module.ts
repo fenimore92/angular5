@@ -19,6 +19,7 @@ import { PlacesComponent } from './places/places.component';
 import { ContactComponent } from './contact/contact.component';
 import {PlacesService} from './services/places.service';
 import {CrearComponent} from './crear/crear.component';
+import {HttpClientModule} from '@angular/common/http';
 
 
 const appRoutes: Routes = [
@@ -50,6 +51,7 @@ const appRoutes: Routes = [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    HttpClientModule
   ],
   providers: [
       PlacesService
