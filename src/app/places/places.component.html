@@ -24,9 +24,8 @@
                         <a routerLink="/crear/{{place.id}}">
                             <h3>{{place.name}}</h3>
                         </a>
-                        <br/>
                         <small>Creado: {{ place.id | date | uppercase }}</small>
-                        <p>{{ place.desc }}</p>
+                        <p [innerHtml]="place.desc | linkifystr"></p>
                     </li>
 
                 </ng-container>

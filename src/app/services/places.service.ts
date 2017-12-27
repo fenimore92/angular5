@@ -10,9 +10,9 @@ export class PlacesService {
 
     public getPlaces() {
         //return this.afDB.list('places/');
-        return this.http.get(this.API_ENDPOINT + '/.json')
+        return this.http.get(this.API_ENDPOINT + '/places.json')
             .map((response) => {
-                const data = response.places;
+                const data = response;
                 return data;
             });
     }

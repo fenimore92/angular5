@@ -20,7 +20,7 @@ import { ContactComponent } from './contact/contact.component';
 import {PlacesService} from './services/places.service';
 import {CrearComponent} from './crear/crear.component';
 import {HttpClientModule} from '@angular/common/http';
-
+import {LinkinfystrPipe} from './pipes/linkinfystr.pipe';
 
 const appRoutes: Routes = [
     { path: '', component: PlacesComponent },
@@ -39,6 +39,7 @@ const appRoutes: Routes = [
       PlacesComponent,
       ContactComponent,
       CrearComponent,
+      LinkinfystrPipe
   ],
   imports: [
     BrowserModule,
