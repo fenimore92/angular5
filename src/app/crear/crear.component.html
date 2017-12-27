@@ -28,13 +28,13 @@
                         <input type="text" class="form-control" [(ngModel)]="place.plan" name="plan"/>
                         <h3>Datos de direccion</h3>
                         <label>Calle y numero</label>
-                        <input type="text" class="form-control" [(ngModel)]="place.street" name="plan"/>
+                        <input type="text" class="form-control" [(ngModel)]="place.street" name="street"/>
                         <br/>
                         <label>Ciudad</label>
-                        <input type="text" class="form-control" [(ngModel)]="place.city" name="plan"/>
+                        <input type="text" class="form-control" [(ngModel)]="place.city" name="city"/>
                         <br/>
                         <label>Pais</label>
-                        <input type="text" class="form-control" [(ngModel)]="place.country" name="plan"/>
+                        <input type="text" class="form-control" [(ngModel)]="place.country" name="country"/>
                         <hr/>
                         <a class="btn btn-primary" (click)="savePlace()">Enviar</a>
                         <a class="btn btn-default" routerLink="/places">Cancelar</a>

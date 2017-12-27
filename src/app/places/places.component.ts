@@ -10,11 +10,16 @@ export class PlacesComponent {
     lat:number = 3.4214482;
     lng:number = -76.4944427;
     places = null;
+    msgError:string = '';
     constructor(private placesService: PlacesService) {
-        placesService.getPlaces()
-            .valueChanges()
+        this.placesService.getPlaces()
             .subscribe(places => {
+                let self = this;
                 this.places = places;
+                this.places = Object.keys(self.places).map(function (key) { return self.places[key]; });
+            }, error => {
+                console.log('error', error);
+                this.msgError = error.statusText;
             });
     }
 }

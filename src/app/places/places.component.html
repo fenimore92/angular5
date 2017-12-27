@@ -1,19 +1,34 @@
+<div class="alert alert-danger"
+     role="alert"
+     [ngClass]="{hide: msgError == ''}">
+    <span class="glyphicon glyphicon-exclamation-sign"
+        aria-hidden="true"></span>
+    <span class="sr-only">Error:</span>
+    <span id="msgError">{{ msgError }}</span>
+</div>
 <agm-map [latitude]="lat" [longitude]="lng">
-    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+    <agm-marker
+            *ngFor="let place of places"
+            [latitude]="place.lat" [longitude]="place.lng">
+    </agm-marker>
 </agm-map>
 <hr />
 <div class="container">
     <div class="row">
         <div class="col-md-8">
             <h2>Lugares Cercanos</h2>
-            <a class="btn btn-primary" routerLink="/crear">Crear nuevo negocio</a>
+            <a class="btn btn-primary" routerLink="/crear/new">Crear nuevo negocio</a>
             <ul class="list-group">
                 <ng-container *ngFor="let place of places">
-                    <a routerLink="/detail/{{place.id}}" [queryParams]="{action:'view'}">
-                        <li class="list-group-item">
-                            {{place.name}}
-                        </li>
-                    </a>
+                    <li class="list-group-item">
+                        <a routerLink="/crear/{{place.id}}">
+                            <h3>{{place.name}}</h3>
+                        </a>
+                        <br/>
+                        <small>Creado: {{ place.id | date | uppercase }}</small>
+                        <p>{{ place.desc }}</p>
+                    </li>
+
                 </ng-container>
             </ul>
         </div>

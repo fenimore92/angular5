@@ -27,7 +27,7 @@ const appRoutes: Routes = [
     { path: 'places', component: PlacesComponent },
     { path: 'detail/:id', component: DetailComponent },
     { path: 'contact', component: ContactComponent },
-    { path: 'crear', component: CrearComponent }
+    { path: 'crear/:id', component: CrearComponent }
 ];
 
 @NgModule({
@@ -38,7 +38,7 @@ const appRoutes: Routes = [
       DetailComponent,
       PlacesComponent,
       ContactComponent,
-      CrearComponent
+      CrearComponent,
   ],
   imports: [
     BrowserModule,
