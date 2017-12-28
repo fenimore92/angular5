@@ -13,6 +13,14 @@
     </agm-marker>
 </agm-map>
 <hr />
+<div id="cuadrado"
+     [@contenedorAnimable]="state"
+     (@contenedorAnimable.start)="animacionInicia($event)"
+     (@contenedorAnimable.done)="animacionTermina($event)"
+></div>
+<a class="btn btn-default" (click)="animar()">
+    Animar
+</a>
 <div class="container">
     <div class="row">
         <div class="col-md-8">
@@ -21,18 +29,38 @@
             <ul class="list-group">
                 <ng-container *ngFor="let place of places">
                     <li class="list-group-item">
-                        <a routerLink="/crear/{{place.id}}">
-                            <h3>{{place.name}}</h3>
-                        </a>
-                        <small>Creado: {{ place.id | date | uppercase }}</small>
-                        <p [innerHtml]="place.desc | linkifystr"></p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a routerLink="/crear/{{place.id}}">
+                                    <h3>{{place.name}}</h3>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <span class="glyphicon glyphicon-star text-warning pull-right"
+                                      *ngIf="place.plan == 'pagado'">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <small>Creado: {{ place.id | date | uppercase }}</small>
+                                <p [innerHtml]="place.desc | linkifystr"></p>
+                            </div>
+                        </div>
                     </li>
-
                 </ng-container>
             </ul>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" [@contenedorAnimable]="state">
             <h2>Destacados</h2>
+            <ng-container *ngFor="let place of places">
+                <div class="bg-warning padding" *ngIf="place.plan == 'pagado'">
+                    <a routerLink="/crear/{{place.id}}">
+                        <h3>{{place.name}}</h3>
+                    </a>
+                    <p [innerHtml]="place.desc | linkifystr"></p>
+                </div>
+            </ng-container>
         </div>
     </div>
 </div>

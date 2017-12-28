@@ -21,13 +21,18 @@ import {PlacesService} from './services/places.service';
 import {CrearComponent} from './crear/crear.component';
 import {HttpClientModule} from '@angular/common/http';
 import {LinkinfystrPipe} from './pipes/linkinfystr.pipe';
+import {LoginComponent} from './login/login.component';
+import {RegisterComponent} from './register/register.component';
+import {AuthorizationService} from './services/authorization.service';
 
 const appRoutes: Routes = [
     { path: '', component: PlacesComponent },
     { path: 'places', component: PlacesComponent },
     { path: 'detail/:id', component: DetailComponent },
     { path: 'contact', component: ContactComponent },
-    { path: 'crear/:id', component: CrearComponent }
+    { path: 'crear/:id', component: CrearComponent },
+    { path: 'login', component: LoginComponent },
+    { path: 'register', component: RegisterComponent },
 ];
 
 @NgModule({
@@ -39,7 +44,9 @@ const appRoutes: Routes = [
       PlacesComponent,
       ContactComponent,
       CrearComponent,
-      LinkinfystrPipe
+      LinkinfystrPipe,
+      LoginComponent,
+      RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +62,8 @@ const appRoutes: Routes = [
     HttpClientModule
   ],
   providers: [
-      PlacesService
+      PlacesService,
+      AuthorizationService
   ],
   bootstrap: [AppComponent]
 })
