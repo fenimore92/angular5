@@ -6,7 +6,17 @@ import {AuthorizationService} from '../services/authorization.service';
     templateUrl: './login.component.html'
 })
 export class LoginComponent {
-    constructor(private authorizationService: AuthorizationService) {
-        this.authorizationService.login('email', 'password');
+    record: any = {
+        email: '',
+        password: ''
+    };
+    constructor(private authorizationService: AuthorizationService) {}
+
+    login() {
+        this.authorizationService.login(this.record.email, this.record.password);
+    }
+
+    facebookLogin() {
+        this.authorizationService.facebookLogin();
     }
 }

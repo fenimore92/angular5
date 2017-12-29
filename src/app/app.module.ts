@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environments/environment';
@@ -24,13 +24,14 @@ import {LinkinfystrPipe} from './pipes/linkinfystr.pipe';
 import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
 import {AuthorizationService} from './services/authorization.service';
+import {MyGuard} from './services/my-guard.service';
 
 const appRoutes: Routes = [
     { path: '', component: PlacesComponent },
     { path: 'places', component: PlacesComponent },
     { path: 'detail/:id', component: DetailComponent },
     { path: 'contact', component: ContactComponent },
-    { path: 'crear/:id', component: CrearComponent },
+    { path: 'crear/:id', component: CrearComponent, canActivate: [MyGuard] },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
 ];
@@ -59,11 +60,13 @@ const appRoutes: Routes = [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    HttpClientModule
+    HttpClientModule,
+      ReactiveFormsModule
   ],
   providers: [
       PlacesService,
-      AuthorizationService
+      AuthorizationService,
+      MyGuard
   ],
   bootstrap: [AppComponent]
 })

@@ -27,6 +27,7 @@ export class PlacesComponent {
     msgError:string = '';
     constructor(private placesService: PlacesService) {
         this.placesService.getPlaces()
+            .valueChanges()
             .subscribe(places => {
                 let self = this;
                 this.places = places;
@@ -36,6 +37,16 @@ export class PlacesComponent {
                 console.log('error', error);
                 this.msgError = error.statusText;
             });
+        /*this.placesService.getPlaces()
+            .subscribe(places => {
+                let self = this;
+                this.places = places;
+                this.places = Object.keys(self.places).map(function (key) { return self.places[key]; });
+                this.state = 'final';
+            }, error => {
+                console.log('error', error);
+                this.msgError = error.statusText;
+            });*/
     }
 
     animar() {

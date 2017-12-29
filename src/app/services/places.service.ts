@@ -9,12 +9,12 @@ export class PlacesService {
     constructor(private afDB: AngularFireDatabase, private http: HttpClient) {}
 
     public getPlaces() {
-        //return this.afDB.list('places/');
-        return this.http.get(this.API_ENDPOINT + '/places.json')
+        return this.afDB.list('places/');
+        /*return this.http.get(this.API_ENDPOINT + '/places.json')
             .map((response) => {
                 const data = response;
                 return data;
-            });
+            });*/
     }
 
     public serachPlace(id) {

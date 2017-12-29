@@ -27,9 +27,13 @@
           </a>
         </li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right" *ngIf="!loggedIn">
         <li><a routerLink="/login">Login</a></li>
         <li><a routerLink="/register">Register</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" *ngIf="loggedIn">
+        <li><a> Welcome {{email}}</a></li>
+        <li><a (click)="logout()">Logout</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
